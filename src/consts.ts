@@ -32,12 +32,12 @@ export const SUPPORTED_LANGUAGES = {
 export const DEFAULT_LANG = SUPPORTED_LANGUAGES.en as SupportedLanguage;
 
 export const siteConfig: Config = {
-  title: ui[DEFAULT_LANG]["site.title"].text,
-  description: ui[DEFAULT_LANG]["site.description"].text,
+  title: ui["site.title"].text,
+  description: ui["site.description"].text,
   lang: DEFAULT_LANG,
   profile: {
     author: "Amy Dang",
-    description: ui[DEFAULT_LANG]["profile.description"].text
+    description: ui["profile.description"].text
   },
   settings: {
     paginationSize: 10
@@ -74,5 +74,5 @@ export const SOCIAL_LINKS: Array<SocialLink> = [
 
 // NOTE: match these entries with keys in `src/i18n/nav.ts`
 export const NAV_LINKS: Array<keyof typeof nav[SupportedLanguage]> = [
-  "home", "about", "blog", "projects", "archive"
+  "home", "about", "blog"
 ];

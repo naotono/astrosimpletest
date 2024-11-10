@@ -7,6 +7,18 @@ import {
 	getUniqueWithCountByProperty,
 	type SupportedLanguage,
 } from "@/utils";
+
+import {
+	getAllPosts,
+	getSupportedLanguages,
+	filterByLanguage,
+	getUniqueTags,
+	sortMDByDate,
+	getPostsByTag,
+	type SupportedLanguage,
+} from "@/utils";
+
+
 import type { GetStaticPaths } from "astro";
 import type { CollectionEntry } from "astro:content";
 
@@ -18,11 +30,13 @@ const posts = await getCollection("blog", ({ data }) => {
 	return import.meta.env.PROD ? data.draft !== true : true;
 });
 
+const allPosts = await getAllPosts();
+
 const { lang } = Astro.params;
 const filteredByLang = filterByLanguage(posts, lang as SupportedLanguage);
 const tags = getUniqueWithCountByProperty(
 	"tags",
-	filteredByLang as Array<CollectionEntry<"blog">>,
+	allPosts,
 );
 ---
 
@@ -54,7 +68,7 @@ const tags = getUniqueWithCountByProperty(
 		{
 			tags.map(([tag, count]) => (
 				<li class="my-2">
-					<a class="cody-link" href={`/${lang}/tags/${tag}`}>
+					<a class="cody-link" href={`/tags/${tag}`}>
 						#{tag}
 					</a>
 					({count})

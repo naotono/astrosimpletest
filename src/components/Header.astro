@@ -13,10 +13,10 @@ const t = useNavTranslations(lang);
 
 function buildNavLink(nav: string, entry: NavEntry): string {
 	if (entry.route) {
-		return `/${lang}${entry.route}`;
+		return entry.route
 	}
 
-	return `/${lang}${nav != "home" ? `/${entry.slug}/` : "/"}`;
+	return nav !== "home" ? `/${entry.slug}/` : "/";
 }
 ---
 
@@ -27,7 +27,7 @@ function buildNavLink(nav: string, entry: NavEntry): string {
 	<div class="block">
 		<a
 			class="title whitespace-nowrap"
-			href={`/${lang}/`}
+			href={`/`}
 			aria-current={url.pathname === "/" ? "page" : false}
 			>{siteConfig.title}</a
 		>
@@ -79,7 +79,7 @@ function buildNavLink(nav: string, entry: NavEntry): string {
 	</nav>
 
 	<div class="flex gap-2 items-center justify-center">
-		<SelectLanguage class="sm:mr-2" />
+		
 		<ThemeToggle />
 
 		<nav-button>

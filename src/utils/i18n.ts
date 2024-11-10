@@ -37,13 +37,13 @@ export function getLocalizedUrl(url: URL, locale: SupportedLanguage): string {
 }
 
 export function useNavTranslations(lang: keyof typeof nav) {
-    return function t(key: keyof typeof nav[SupportedLanguage]): NavEntry {
-        return nav[lang][key] || nav[DEFAULT_LANG][key];
+    return function t(key: keyof typeof nav): NavEntry {
+        return nav[key] || nav[key];
     }
 }
 
 export function useUITranslations(lang: keyof typeof nav) {
-    return function t(key: keyof typeof ui[SupportedLanguage]): UIEntry {
-        return ui[lang][key] || ui[DEFAULT_LANG][key];
+    return function t(key: keyof typeof ui): UIEntry {
+        return ui[key] || ui[key];
     }
 }

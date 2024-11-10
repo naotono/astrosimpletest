@@ -43,6 +43,8 @@ interface Props {
 }
 
 const { page, tags } = Astro.props;
+const allPosts = await getAllPosts(true);
+console.log(allPosts);
 
 const meta = {
 	title: "Posts",
@@ -69,7 +71,8 @@ const paginationProps = {
 	<section class="cody-bg">
 		<h1 class="title">Posts</h1>
 		<ul class="flex flex-col gap-4">
-			{page.data.map((post) => <PostPreview post={post} withDesc />)}
+			<!-- {page.data.map((post) => <PostPreview post={post} withDesc />)} -->
+			{allPosts.map((post) => <PostPreview post={post} withDesc />)}
 		</ul>
 		<Pagination {...paginationProps} />
 	</section>

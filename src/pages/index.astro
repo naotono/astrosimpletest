@@ -69,7 +69,7 @@ const tech: Array<{ title: string; desc: string; href: string }> = [
 		<h2 class="title">Posts</h2>
 		<ul class="space-y-4 sm:space-y-2">
 			{
-				filteredPostsByLanguage.map((p) => (
+				allPostsByPinned.map((p) => (
 					<PostPreview post={p as CollectionEntry<"blog">} />
 				))
 			}
